@@ -1,0 +1,32 @@
+<form [formGroup]="createAccountForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Confirmer le mot de passe</mat-label>
+        <input [type]="hideConfirmPassword ? 'password' : 'text'" matInput formControlName="confirmPassword"
+            [errorStateMatcher]="confirmValidParentMatcher">
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"
+            [attr.aria-label]="'Hide confirm password'" [attr.aria-pressed]="hideConfirmPassword">
+            <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>Les deux mots de passe ne correspondent pas</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input type="text" matInput formControlName="username">
+    </mat-form-field>
+    <mat-card-actions>
+        <button [disabled]="!createAccountForm.valid" mat-flat-button color="primary"
+            (click)="onSubmitForm()">Valider</button>
+    </mat-card-actions>
+</form>

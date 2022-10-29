@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+        <mat-error>{{ getFormControlErrorText(loginForm.controls['email']) }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error>{{ getFormControlErrorText(loginForm.controls['password']) }}</mat-error>
+    </mat-form-field>
+    <div class="actions-wrapper">
+        <button [ngClass]="{'spinner': loading}" mat-flat-button color="primary" (click)="onSubmitForm()"
+            [disabled]="loading">
+            SE CONNECTER
+        </button>
+        <div class="fancy-span--container center-content"><span class="fancy-span">OU</span></div>
+        <div class="center-content">
+            <mat-card-subtitle>Pas encore de compte ?</mat-card-subtitle>
+            <a href="/create-account">Créer un compte</a>
+        </div>
+    </div>
+</form>
