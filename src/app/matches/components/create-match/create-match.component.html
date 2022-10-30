@@ -1,0 +1,43 @@
+<div class="create-match-container">
+    <h2>Créer un nouveau match</h2>
+    <form [formGroup]="createMatchForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Équipe 1</mat-label>
+            <mat-select formControlName="teamOne">
+                <mat-option *ngFor="let team of teams" [value]="team.id">
+                    {{team.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Équipe 2</mat-label>
+            <mat-select formControlName="teamTwo">
+                <mat-option *ngFor="let team of teams" [value]="team.id">
+                    {{team.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Date du match</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Score vainqueur</mat-label>
+            <input matInput formControlName="winnerPoints">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Score exact</mat-label>
+            <input matInput formControlName="guessPoints">
+        </mat-form-field>
+        <div class="actions">
+            <button mat-raised-button color="primary" (click)="save()">
+                Valider
+            </button>
+            <button mat-raised-button color="primary">
+                Annuler
+            </button>
+        </div>
+    </form>
+</div>

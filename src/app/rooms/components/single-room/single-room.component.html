@@ -1,0 +1,19 @@
+<ng-container *ngIf="room$ | async as room">
+    <div class="room-container">
+        <h2>{{room.name}}</h2>
+        <div class="matches-container">
+            <div>
+                <mat-card *ngFor="let match of room.matches">
+                    <mat-card-title>{{match.teamOne}} VS {{match.teamTwo}}</mat-card-title>
+                    <mat-card-subtitle>{{match.startDate | date: 'short'}}</mat-card-subtitle>
+                    <mat-card-content></mat-card-content>
+                </mat-card>
+            </div>
+            <div class="actions">
+                <button mat-mini-fab *ngIf="isOwner$ | async" color="primary" (click)="createMatch()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-container>

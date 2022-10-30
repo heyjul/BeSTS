@@ -1,10 +1,15 @@
 <mat-toolbar>
-    <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>Acceuil</span>
+    <div (click)="goHome()">
+        <button mat-icon-button>
+            <mat-icon>home</mat-icon>
+        </button>
+        <span *ngIf="isConnected$ | async; else appName">Acceuil</span>
+    </div>
+    <ng-template #appName>
+        <span>L'App</span>
+    </ng-template>
     <span class="example-spacer"></span>
-    <button mat-button>
+    <button *ngIf="isConnected$ | async" mat-button (click)="logout()">
         Déconnexion
     </button>
 </mat-toolbar>

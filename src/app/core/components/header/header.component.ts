@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/login/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isConnected$!: Observable<boolean>;
+
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.isConnected$ = this.authService.isConnected$;
   }
 
+  goHome(): void {
+    this.router.navigateByUrl('');
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }

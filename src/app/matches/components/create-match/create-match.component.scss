@@ -1,0 +1,22 @@
+.create-match-container {
+    width: 80%;
+    margin: 0 auto;
+
+    h2 {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+
+    button:first-child {
+        margin-right: 15px;
+    }
+}

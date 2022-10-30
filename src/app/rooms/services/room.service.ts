@@ -23,4 +23,8 @@ export class RoomService {
   join(link: string): Observable<Room> {
     return this.http.post<Room>(`${environment.apiUrl}/rooms/join/${link}`, null);
   }
+
+  getById(id: string): Observable<Room> {
+    return this.http.get<Room>(`${environment.apiUrl}/rooms/${id}`);
+  }
 }

@@ -27,13 +27,14 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.pipe(
-      map(data => new BehaviorSubject(data['rooms'])),
       first(),
+      map(data => new BehaviorSubject(data['rooms'])),
     ).subscribe(subject => this._rooms$ = subject);
   }
 
   openRoom(roomId: string): void {
-    this.router.navigate([roomId]);
+    console.log(roomId);
+    this.router.navigateByUrl(`/rooms/${roomId}`);
   }
 
   openCreateRoomDialog(): void {

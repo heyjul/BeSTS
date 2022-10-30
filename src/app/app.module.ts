@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { RoomsModule } from './rooms/rooms.module';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatchesModule } from './matches/matches.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { RoomsModule } from './rooms/rooms.module';
     CoreModule,
     LoginModule.forRoot(),
     RoomsModule,
+    MatNativeDateModule,
+    MatchesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,10 +4,12 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
+import { DateAdapter } from '@angular/material/core';
+import { CustomDatepicker } from './services/custom-datepicker';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent
   ],
   providers: [
-
+    { provide: DateAdapter, useClass: CustomDatepicker },
   ]
 })
 export class CoreModule { }
