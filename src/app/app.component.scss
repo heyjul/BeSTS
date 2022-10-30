@@ -1,0 +1,12 @@
+div {
+    max-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+app-header {
+    flex-shrink: 1;
+}

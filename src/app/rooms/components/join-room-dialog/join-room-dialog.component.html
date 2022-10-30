@@ -1,0 +1,13 @@
+<mat-form-field appearance="fill">
+    <mat-label>Lien</mat-label>
+    <input matInput [formControl]="linkCtrl">
+</mat-form-field>
+
+<div class="actions">
+    <button [disabled]="!linkCtrl.valid" mat-raised-button color="primary" [mat-dialog-close]="linkCtrl.value">
+        Valider
+    </button>
+    <button mat-raised-button color="primary" (click)="close()">
+        Annuler
+    </button>
+</div>

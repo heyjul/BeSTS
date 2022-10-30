@@ -47,7 +47,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatBadgeModule,
         MatListModule,
         MatProgressBarModule,
-        MatPaginatorModule
+        MatPaginatorModule,
     ],
     providers: [
         { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'center' } }

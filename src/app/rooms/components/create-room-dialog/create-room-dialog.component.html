@@ -1,0 +1,21 @@
+<form [formGroup]="createRoomForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div class="actions">
+        <button [disabled]="!createRoomForm.valid" mat-raised-button color="primary"
+            [mat-dialog-close]="createRoomForm.value">
+            Valider
+        </button>
+        <button mat-raised-button color="primary" (click)="close()">
+            Annuler
+        </button>
+    </div>
+</form>

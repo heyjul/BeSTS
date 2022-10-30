@@ -1,0 +1,18 @@
+<div class="rooms-container">
+    <div>
+        <mat-card *ngFor="let room of rooms$ | async" (click)="openRoom(room.id)">
+            <mat-card-title>{{room.name}}</mat-card-title>
+            <mat-card-content>
+                {{room.description}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="rooms-actions">
+        <button mat-raised-button color="primary" (click)="openJoinRoomDialog()">
+            Rejoindre
+        </button>
+        <button mat-mini-fab color="primary" (click)="openCreateRoomDialog()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
+import { RoomsModule } from './rooms/rooms.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,6 +20,7 @@ import { LoginModule } from './login/login.module';
     SharedModule,
     CoreModule,
     LoginModule.forRoot(),
+    RoomsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

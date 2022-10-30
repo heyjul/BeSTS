@@ -1,0 +1,41 @@
+.rooms-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+
+    &>div:first-child {
+        overflow-y: auto;
+    }
+
+    mat-card {
+        margin-top: 2em;
+
+        mat-card-title {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        mat-card-content {
+            max-height: 100px;
+            overflow: hidden;
+        }
+    }
+
+}
+
+.rooms-actions {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    margin: 20px auto;
+
+    button:first-child {
+        margin-bottom: 15px;
+    }
+}

@@ -8,8 +8,8 @@ import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { Token } from "../models/token.model";
-import { LoginRequest } from "../models/login-request.model";
-import { RegisterRequest } from "../models/register-request.model";
+import { Login } from "../models/login.model";
+import { Register } from "../models/register.model";
 
 @Injectable()
 export class AuthService {
@@ -35,14 +35,14 @@ export class AuthService {
         setTimeout(() => this.setConnectedUser());
     }
 
-    login(req: LoginRequest): Observable<Token> {
+    login(req: Login): Observable<Token> {
         return this.http.post<Token>(`${environment.apiUrl}/login`, req).pipe(
             tap(res => this.setSession(res)),
             shareReplay()
         );
     }
 
-    register(req: RegisterRequest): Observable<boolean> {
+    register(req: Register): Observable<boolean> {
         return this.http.post(`${environment.apiUrl}/register`, req).pipe(
             map(_ => true),
             shareReplay()
@@ -55,7 +55,7 @@ export class AuthService {
 
     refreshToken(): Observable<Token> {
         const refreshToken = localStorage.getItem(this.REFRESH_TOKEN);
-        return this.http.post<Token>(`${environment.apiUrl}/refresh-token`, { refresh_token: refreshToken })
+        return this.http.post<Token>(`${environment.apiUrl}/refresh-token`, { refreshToken: refreshToken })
             .pipe(tap(token => this.setSession(token)));
     }
 
