@@ -10,6 +10,8 @@ import { LoginModule } from './login/login.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatchesModule } from './matches/matches.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,12 @@ import { MatchesModule } from './matches/matches.module';
     RoomsModule,
     MatNativeDateModule,
     MatchesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

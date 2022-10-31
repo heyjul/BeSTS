@@ -1,0 +1,17 @@
+{
+  "name": "Bet er Safe Than Sorry",
+  "short_name": "BeSTS",
+  "theme_color": "#303030",
+  "background_color": "#303030",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/foot-sexy-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

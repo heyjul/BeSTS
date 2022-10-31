@@ -1,0 +1,73 @@
+{
+  "configVersion": 1,
+  "timestamp": 1667244348278,
+  "index": "/soccer_bet_front/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/soccer_bet_front/favicon.ico",
+        "/soccer_bet_front/index.html",
+        "/soccer_bet_front/main.03a6da2f56145384.js",
+        "/soccer_bet_front/manifest.webmanifest",
+        "/soccer_bet_front/polyfills.bda049c3ee23953d.js",
+        "/soccer_bet_front/runtime.9c409f17beec6587.js",
+        "/soccer_bet_front/styles.901a9d7c7d8fda4a.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/soccer_bet_front/assets/icons/foot-idk-1024.png",
+        "/soccer_bet_front/assets/icons/foot-lost-1024.png",
+        "/soccer_bet_front/assets/icons/foot-sexy-1024.png",
+        "/soccer_bet_front/assets/icons/foot-weird-1024.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/soccer_bet_front/assets/icons/foot-idk-1024.png": "fe75a18b26f3dcd2fe9771fc79a5a2f39250f9e6",
+    "/soccer_bet_front/assets/icons/foot-lost-1024.png": "9833629d4939bdffba54809127e83d45b5d78e43",
+    "/soccer_bet_front/assets/icons/foot-sexy-1024.png": "21ccac0aaa3387f7a19538477ae25fde896ba5a4",
+    "/soccer_bet_front/assets/icons/foot-weird-1024.png": "3847266aa36e65d645c53f3316477a6dec754d42",
+    "/soccer_bet_front/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/soccer_bet_front/index.html": "2706219fe8801046c5620121adcdaa06610c5809",
+    "/soccer_bet_front/main.03a6da2f56145384.js": "62c6203ecee8c6474da3b319af82d3fbf0a2078f",
+    "/soccer_bet_front/manifest.webmanifest": "caa23b578cbc234758c176493f5b55767661a4d1",
+    "/soccer_bet_front/polyfills.bda049c3ee23953d.js": "5dc1d305e2569c0c311e86ab62a504815bd424b0",
+    "/soccer_bet_front/runtime.9c409f17beec6587.js": "37b317e21cf5f57d5e0d997319d44c5288553ebd",
+    "/soccer_bet_front/styles.901a9d7c7d8fda4a.css": "b84dcfa6af1edebf5524d8e9e078686038fd68c5"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
