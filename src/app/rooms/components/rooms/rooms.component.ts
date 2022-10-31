@@ -34,7 +34,7 @@ export class RoomsComponent implements OnInit {
 
   openRoom(roomId: string): void {
     console.log(roomId);
-    this.router.navigateByUrl(`/rooms/${roomId}`);
+    this.router.navigateByUrl(`/soccer_bet_front/rooms/${roomId}`);
   }
 
   openCreateRoomDialog(): void {

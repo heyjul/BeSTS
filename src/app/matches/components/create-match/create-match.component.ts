@@ -46,7 +46,7 @@ export class CreateMatchComponent implements OnInit {
       guessPoints: Number(val.guessPoints!),
       roomId: this.roomId,
     }, this.roomId)
-      .subscribe(() => this.router.navigateByUrl(`rooms/${this.roomId}`));
+      .subscribe(() => this.router.navigateByUrl(`/soccer_bet_front/rooms/${this.roomId}`));
   }
 
   close(): void {

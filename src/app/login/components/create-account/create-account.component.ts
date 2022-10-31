@@ -41,6 +41,6 @@ export class CreateAccountComponent {
       username: formValues.username!,
       password: formValues.password!
     }
-    this.auth.register(registration).subscribe(_ => this.router.navigateByUrl('/login'));
+    this.auth.register(registration).subscribe(_ => this.router.navigateByUrl('/soccer_bet_front/login'));
   }
 }

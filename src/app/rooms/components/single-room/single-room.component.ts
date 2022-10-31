@@ -59,7 +59,7 @@ export class SingleRoomComponent implements OnInit {
   }
 
   createMatch(): void {
-    this.router.navigateByUrl(`create-match/${this._room$.value.id}`);
+    this.router.navigateByUrl(`/soccer_bet_front/create-match/${this._room$.value.id}`);
   }
 
   remove(event: MouseEvent, id: string): void {

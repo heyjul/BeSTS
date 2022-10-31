@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goHome(): void {
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/soccer_bet_front');
   }
 
   logout(): void {

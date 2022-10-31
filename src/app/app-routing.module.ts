@@ -11,12 +11,16 @@ import { RoomsResolver } from './rooms/resolvers/rooms.resolver';
 import { SingleRoomResolver } from './rooms/resolvers/single-room.resolver';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'create-account', component: CreateAccountComponent },
-  { path: 'rooms', component: RoomsComponent, resolve: { rooms: RoomsResolver } },
-  { path: 'rooms/:id', component: SingleRoomComponent, resolve: { room: SingleRoomResolver, matches: MatchesResolver } },
-  { path: 'create-match/:id', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver } },
-  { path: '**', redirectTo: 'rooms' }
+  {
+    path: 'soccer_bet_front', children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'create-account', component: CreateAccountComponent },
+      { path: 'rooms', component: RoomsComponent, resolve: { rooms: RoomsResolver } },
+      { path: 'rooms/:id', component: SingleRoomComponent, resolve: { room: SingleRoomResolver, matches: MatchesResolver } },
+      { path: 'create-match/:id', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver } },
+      { path: '**', redirectTo: 'rooms' }
+    ]
+  }
 ];
 
 @NgModule({
