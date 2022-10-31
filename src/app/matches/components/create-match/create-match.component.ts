@@ -4,7 +4,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router'
 import { Observable } from 'rxjs';
 import { Team } from 'src/app/shared/models/team.model';
 import { TeamService } from 'src/app/shared/services/team.service';
-import { MatchService } from '../../services/match.service';
+import { MatchService } from '../../../shared/services/match.service';
 
 @Component({
   selector: 'app-create-match',

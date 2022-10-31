@@ -1,12 +1,14 @@
 <mat-toolbar>
     <div (click)="goHome()">
-        <button mat-icon-button>
-            <mat-icon>home</mat-icon>
-        </button>
-        <span *ngIf="isConnected$ | async; else appName">Acceuil</span>
+        <ng-container *ngIf="isConnected$ | async; else appName">
+            <button mat-icon-button>
+                <mat-icon>home</mat-icon>
+            </button>
+            <span>Acceuil</span>
+        </ng-container>
     </div>
     <ng-template #appName>
-        <span>L'App</span>
+        <span>Bet er Safe Than Sorry</span>
     </ng-template>
     <span class="example-spacer"></span>
     <button *ngIf="isConnected$ | async" mat-button (click)="logout()">

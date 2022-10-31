@@ -1,0 +1,12 @@
+h2 {
+    text-align: center;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+
+    button:first-child {
+        margin-right: 15px;
+    }
+}
