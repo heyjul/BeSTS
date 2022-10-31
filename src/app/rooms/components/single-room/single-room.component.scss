@@ -23,14 +23,24 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            font-size: 18px;
         }
 
         mat-card-content {
-            max-height: 100px;
-            overflow: hidden;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        mat-card-content.guessed {
+            color: lightgreen;
+            text-align: center;
         }
     }
 
+}
+
+.disabled {
+    border: 1px solid var(--warn);
 }
 
 .matches-container {
@@ -38,16 +48,33 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    overflow: hidden;
+
+    .card-scroll {
+        overflow-y: auto;
+    }
 }
 
 .actions {
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
-    width: 30%;
-    align-items: center;
-    margin: 20px auto;
 
-    button:first-child {
-        margin-bottom: 15px;
+    div {
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+
+        mat-icon {
+            scale: 2;
+        }
+
+        button:nth-child(2) {
+            margin-left: 20px;
+        }
+    }
+
+    &>button:first-of-type {
+        margin: 15px auto;
     }
 }

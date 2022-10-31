@@ -24,4 +24,8 @@ export class MatchService {
   delete(matchId: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/matches/${matchId}`);
   }
+
+  getById(matchId: string): Observable<FullMatch> {
+    return this.http.get<FullMatch>(`${environment.apiUrl}/matches/match/${matchId}`);
+  }
 }

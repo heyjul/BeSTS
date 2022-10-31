@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
@@ -26,7 +27,8 @@ export class CreateMatchComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private matchService: MatchService) { }
+    private matchService: MatchService,
+    private location: Location) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => this.teams = data['teams']);
@@ -40,10 +42,14 @@ export class CreateMatchComponent implements OnInit {
       teamOneId: val.teamOne!,
       teamTwoId: val.teamTwo!,
       startDate: new Date(val.startDate!),
-      winnerPoints: val.winnerPoints!,
-      guessPoints: val.guessPoints!,
+      winnerPoints: Number(val.winnerPoints!),
+      guessPoints: Number(val.guessPoints!),
       roomId: this.roomId,
     }, this.roomId)
       .subscribe(() => this.router.navigateByUrl(`rooms/${this.roomId}`));
+  }
+
+  close(): void {
+    this.location.back();
   }
 }

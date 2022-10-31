@@ -4,11 +4,13 @@ import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { BetDialogComponent } from './components/bet-dialog/bet-dialog.component';
 
 @NgModule({
     declarations: [
     
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+         BetDialogComponent
   ],
     imports: [
         CommonModule,

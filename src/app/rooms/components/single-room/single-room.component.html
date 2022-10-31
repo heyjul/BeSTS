@@ -2,25 +2,43 @@
     <div class="room-container">
         <h2>{{room.name}}</h2>
         <div class="matches-container">
-            <div>
-                <mat-card *ngFor="let match of matches$ | async">
+            <div class="card-scroll">
+                <mat-card *ngFor="let match of matches$ | async" [ngClass]="{disabled: !canBet(match.startDate)}"
+                    (click)="openBetDialog(match)">
                     <mat-card-header>
                         <div mat-card-avatar *ngIf="isOwner$ | async">
-                            <mat-icon (click)="remove(match.id)">delete_forever</mat-icon>
-                            <mat-icon (click)="remove(match.id)">edit</mat-icon>
+                            <button mat-icon-button (click)="remove($event, match.id)">
+                                <mat-icon>delete_forever</mat-icon>
+                            </button>
+                            <button mat-icon-button [disabled]="!canBet(match.startDate)" (click)="edit($event, match)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
                         </div>
                         <mat-card-title>{{match.teamOne}} VS {{match.teamTwo}}</mat-card-title>
                         <mat-card-subtitle>{{match.startDate | date: 'short'}}</mat-card-subtitle>
                     </mat-card-header>
-                    <mat-card-content *ngIf="!!match.guessedTeamOneScore">
+                    <mat-card-content class="guessed" *ngIf="!!match.guessedTeamOneScore; else placeholder">
                         {{match.guessedTeamOneScore}} - {{match.guessedTeamTwoScore}}
                     </mat-card-content>
+                    <ng-template #placeholder>
+                        <mat-card-content>
+                            ? - ?
+                        </mat-card-content>
+                    </ng-template>
                 </mat-card>
             </div>
             <div class="actions">
                 <button mat-mini-fab *ngIf="isOwner$ | async" color="primary" (click)="createMatch()">
                     <mat-icon>add</mat-icon>
                 </button>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon color="primary">bar_chart</mat-icon>
+                    </button>
+                    <button mat-icon-button *ngIf="isOwner$ | async">
+                        <mat-icon color="primary" (click)="copy(room.id)">person_add</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

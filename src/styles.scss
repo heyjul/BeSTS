@@ -27,3 +27,8 @@ router-outlet+* {
     flex-grow: 1;
     overflow: hidden;
 }
+
+.mat-snack-bar-container {
+    max-width: 80% !important;
+    margin: 20px auto !important;
+}

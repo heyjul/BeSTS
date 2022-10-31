@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <mat-label>{{data.teamOne}}</mat-label>
+        <input type="text" matInput formControlName="teamOne">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>{{data.teamTwo}}</mat-label>
+        <input type="text" matInput formControlName="teamTwo">
+    </mat-form-field>
+
+    <div class="actions">
+        <button [disabled]="!form.valid" mat-raised-button color="primary" [mat-dialog-close]="form.value">
+            Valider
+        </button>
+        <button mat-raised-button color="primary" (click)="close()">
+            Annuler
+        </button>
+    </div>
+</form>

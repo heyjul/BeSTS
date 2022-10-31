@@ -7,6 +7,10 @@ import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog
 import { FullMatch } from 'src/app/shared/models/full-match.model';
 import { MatchService } from 'src/app/shared/services/match.service';
 import { Room } from '../../models/room.model';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BetDialogComponent } from 'src/app/shared/components/bet-dialog/bet-dialog.component';
+import { BetService } from 'src/app/shared/services/bet.service';
 
 @Component({
   selector: 'app-single-room',
@@ -22,7 +26,9 @@ export class SingleRoomComponent implements OnInit {
 
   private _matches$!: BehaviorSubject<FullMatch[]>;
   get matches$() {
-    return this._matches$.asObservable();
+    return this._matches$.asObservable().pipe(
+      map(x => x.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()))
+    );
   }
 
   isOwner$!: Observable<boolean>;
@@ -31,7 +37,10 @@ export class SingleRoomComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private dialog: MatDialog,
-    private matchService: MatchService) { }
+    private matchService: MatchService,
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar,
+    private betService: BetService) { }
 
   ngOnInit(): void {
     this.route.data.pipe(
@@ -53,7 +62,9 @@ export class SingleRoomComponent implements OnInit {
     this.router.navigateByUrl(`create-match/${this._room$.value.id}`);
   }
 
-  remove(id: string): void {
+  remove(event: MouseEvent, id: string): void {
+    event.stopPropagation();
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '80%',
       data: 'Êtes vous sûr de vouloir supprimer ce match ?'
@@ -63,6 +74,51 @@ export class SingleRoomComponent implements OnInit {
       if (result)
         this.matchService.delete(id).subscribe(() => {
           this._matches$.next(this._matches$.value.filter(x => x.id !== id));
+        });
+    });
+  }
+
+  edit(event: MouseEvent, match: FullMatch): void {
+    event.stopPropagation();
+  }
+
+  copy(id: string): void {
+    this.clipboard.copy(id);
+    this.snackBar.open('Copié dans le presse-papiers', 'Fermer');
+  }
+
+  canBet(startDate: Date | string): boolean {
+    return new Date(startDate) > new Date();
+  }
+
+  openBetDialog(match: FullMatch): void {
+    if (!this.canBet(match.startDate))
+      return;
+
+    const dialogRef = this.dialog.open(BetDialogComponent, {
+      width: '80%',
+      data: {
+        teamOne: match.teamOne,
+        teamTwo: match.teamTwo,
+        guessedTeamOneScore: match.guessedTeamOneScore,
+        guessedTeamTwoScore: match.guessedTeamTwoScore,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!!result)
+        this.betService.createOrUpdate({
+          teamOneScore: Number(result.teamOne),
+          teamTwoScore: Number(result.teamTwo),
+        }, match.id).subscribe(bet => {
+          this._matches$.next(this._matches$.value.map(x => {
+            if (x.id !== match.id)
+              return x;
+
+            x.guessedTeamOneScore = bet.teamOneScore;
+            x.guessedTeamTwoScore = bet.teamTwoScore;
+            return x;
+          }));
         });
     });
   }
