@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1667245151944,
+  "timestamp": 1667251500561,
   "index": "/soccer_bet_front/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/soccer_bet_front/favicon.ico",
         "/soccer_bet_front/index.html",
-        "/soccer_bet_front/main.85afd680e2f11ce1.js",
+        "/soccer_bet_front/main.361d4f61fd5e308f.js",
         "/soccer_bet_front/manifest.webmanifest",
         "/soccer_bet_front/polyfills.bda049c3ee23953d.js",
         "/soccer_bet_front/runtime.9c409f17beec6587.js",
@@ -44,8 +44,8 @@
     "/soccer_bet_front/assets/icons/foot-sexy-1024.png": "21ccac0aaa3387f7a19538477ae25fde896ba5a4",
     "/soccer_bet_front/assets/icons/foot-weird-1024.png": "3847266aa36e65d645c53f3316477a6dec754d42",
     "/soccer_bet_front/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/soccer_bet_front/index.html": "2eefa1c2aa676c51471fe0d88e8c5e9c604e8899",
-    "/soccer_bet_front/main.85afd680e2f11ce1.js": "3143551e96ae53293b8925388cbe8305d42e48ad",
+    "/soccer_bet_front/index.html": "29ca417eb2543858cde132806256a0c651031fd7",
+    "/soccer_bet_front/main.361d4f61fd5e308f.js": "33549551cbf19c849058203fbb282067e94b3fe4",
     "/soccer_bet_front/manifest.webmanifest": "caa23b578cbc234758c176493f5b55767661a4d1",
     "/soccer_bet_front/polyfills.bda049c3ee23953d.js": "5dc1d305e2569c0c311e86ab62a504815bd424b0",
     "/soccer_bet_front/runtime.9c409f17beec6587.js": "37b317e21cf5f57d5e0d997319d44c5288553ebd",
