@@ -87,10 +87,11 @@ export class AuthService {
         localStorage.removeItem(this.REFRESH_TOKEN);
         this._isConnected$.next(false);
         this._connectedUser$.next(undefined);
-        this.router.navigateByUrl('/soccer_bet_front/login');
+        this.router.navigateByUrl('/login');
     }
 
     private checkToken(token: string, expiration: number): boolean {
+        console.log(expiration, new Date().getTime());
         return !!token && new Date(expiration) > new Date();
     }
 

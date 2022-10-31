@@ -39,7 +39,7 @@ export class LoginComponent {
     const val = this.loginForm.value;
     this.auth.login({ email: val.email!, password: val.password! }).pipe(
       tap((_user) => {
-        this.router.navigateByUrl('/soccer_bet_front/')
+        this.router.navigateByUrl('/')
       }),
       catchError(() => {
         this.loading = false;

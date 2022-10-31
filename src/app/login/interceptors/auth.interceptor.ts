@@ -50,7 +50,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
       }
       else {
         this.authService.logout();
-        this.router.navigate(['login']);
+        this.router.navigateByUrl('/login');
       }
     }
     return this.refreshTokenSubject.pipe(
@@ -60,14 +60,14 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     );
   }
   private addTokenHeader(request: HttpRequest<any>) {
+    const headers: { [p: string]: string | string[] } = {};
+    headers['Bypass-Tunnel-Reminder'] = 'true'; // bypass localtunnel warning page
     const token = this.authService.getToken();
-    if (token === null || token === undefined)
-      return request;
+    if (!(token === null || token === undefined))
+      headers['Authorization'] = `Bearer ${token}`;
 
     return request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
+      setHeaders: headers
     });
   }
 }
