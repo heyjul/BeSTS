@@ -91,7 +91,7 @@ export class AuthService {
     }
 
     private checkToken(token: string, expiration: number): boolean {
-        console.log(expiration, new Date().getTime());
+        console.log(new Date(expiration).getTime(), new Date().getTime());
         return !!token && new Date(expiration) > new Date();
     }
 

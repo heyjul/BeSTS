@@ -9,6 +9,7 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
 export class AskUpdateService {
   constructor(private swUpdate: SwUpdate,
     private dialog: MatDialog) {
+    console.log('Check for updates');
     swUpdate.versionUpdates.subscribe(_ => this.askUserToUpdate());
   }
 
@@ -16,7 +17,7 @@ export class AskUpdateService {
     console.log('Asking for update');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '80%',
-      data: { message: 'Une nouvelle version est disponible, voulez-vous la télécharger ?' }
+      data: 'Une nouvelle version est disponible, voulez-vous la télécharger ?'
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --output-path docs --base-href=/BeSTS/ & git add . & git commit & git push",
+    "deploy-f": "ng build --output-path docs --base-href=/BeSTS/ & git add . & git commit --amend --no-edit & git push --force"
   },
   "private": true,
   "dependencies": {

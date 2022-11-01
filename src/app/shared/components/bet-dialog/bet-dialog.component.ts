@@ -17,8 +17,8 @@ export class BetDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      teamOne: new FormControl(this.data.guessedTeamOneScore ?? 0, Validators.required),
-      teamTwo: new FormControl(this.data.guessedTeamTwoScore ?? 0, Validators.required),
+      teamOne: new FormControl(this.data.guessedTeamOneScore ?? 0, [Validators.required, Validators.min(0)]),
+      teamTwo: new FormControl(this.data.guessedTeamTwoScore ?? 0, [Validators.required, Validators.min(0)]),
     });
   }
 
