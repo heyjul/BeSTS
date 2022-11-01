@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate } from '@angular/service-worker';
+import { filter } from 'rxjs';
 import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AskUpdateService {
-  constructor(private swUpdate: SwUpdate,
+export class AppUpdateService {
+  constructor(private readonly updates: SwUpdate,
     private dialog: MatDialog) {
     console.log('Check for updates');
-    swUpdate.versionUpdates.subscribe(_ => this.askUserToUpdate());
+    this.updates.versionUpdates.pipe(filter(x => x.type === "VERSION_READY")).subscribe(_ => {
+      this.showAppUpdateAlert();
+    });
   }
-
-  askUserToUpdate() {
-    console.log('Asking for update');
+  showAppUpdateAlert() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '80%',
-      data: 'Une nouvelle version est disponible, voulez-vous la télécharger ?'
+      data: 'Une nouvelle version est disponible, voulez-vous l\'utiliser ?'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result)
-        window.location.reload();
+        this.updates.activateUpdate().then(() => document.location.reload());
     });
   }
 }

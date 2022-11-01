@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AskUpdateService } from 'src/app/ask-update.service';
 import { AuthService } from 'src/app/login/services/auth.service';
 
 @Component({

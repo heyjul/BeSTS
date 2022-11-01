@@ -12,7 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatchesModule } from './matches/matches.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AskUpdateService } from './ask-update.service';
+import { AppUpdateService } from './app-update.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { AskUpdateService } from './ask-update.service';
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [AskUpdateService],
+  providers: [AppUpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
