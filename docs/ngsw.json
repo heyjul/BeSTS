@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1667297743329,
+  "timestamp": 1667298075511,
   "index": "/BeSTS/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/BeSTS/favicon.ico",
         "/BeSTS/index.html",
-        "/BeSTS/main.cf950752a5a6096e.js",
+        "/BeSTS/main.0b92d3b7088f6a9a.js",
         "/BeSTS/manifest.webmanifest",
         "/BeSTS/polyfills.bda049c3ee23953d.js",
         "/BeSTS/runtime.9c409f17beec6587.js",
@@ -44,8 +44,8 @@
     "/BeSTS/assets/icons/foot-sexy-1024.png": "21ccac0aaa3387f7a19538477ae25fde896ba5a4",
     "/BeSTS/assets/icons/foot-weird-1024.png": "3847266aa36e65d645c53f3316477a6dec754d42",
     "/BeSTS/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/BeSTS/index.html": "c7d794dc874332a5c34b72af2dc787151ec7bf2c",
-    "/BeSTS/main.cf950752a5a6096e.js": "ef7c6f629aae07e67def3eaacba240d7acdb65ea",
+    "/BeSTS/index.html": "75949af9ae07a879c1dd51a6c2c4dabd908a9c70",
+    "/BeSTS/main.0b92d3b7088f6a9a.js": "422c0992c53ffb3b72a81fed0b92713328656caa",
     "/BeSTS/manifest.webmanifest": "caa23b578cbc234758c176493f5b55767661a4d1",
     "/BeSTS/polyfills.bda049c3ee23953d.js": "5dc1d305e2569c0c311e86ab62a504815bd424b0",
     "/BeSTS/runtime.9c409f17beec6587.js": "37b317e21cf5f57d5e0d997319d44c5288553ebd",
