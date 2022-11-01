@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1667298075511,
+  "timestamp": 1667319257893,
   "index": "/BeSTS/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/BeSTS/favicon.ico",
         "/BeSTS/index.html",
-        "/BeSTS/main.0b92d3b7088f6a9a.js",
+        "/BeSTS/main.99471e4eb61c68b6.js",
         "/BeSTS/manifest.webmanifest",
         "/BeSTS/polyfills.bda049c3ee23953d.js",
         "/BeSTS/runtime.9c409f17beec6587.js",
-        "/BeSTS/styles.901a9d7c7d8fda4a.css"
+        "/BeSTS/styles.a3c8e3008fc2514b.css"
       ],
       "patterns": []
     },
@@ -32,7 +32,9 @@
         "/BeSTS/assets/icons/foot-idk-1024.png",
         "/BeSTS/assets/icons/foot-lost-1024.png",
         "/BeSTS/assets/icons/foot-sexy-1024.png",
-        "/BeSTS/assets/icons/foot-weird-1024.png"
+        "/BeSTS/assets/icons/foot-weird-1024.png",
+        "/BeSTS/assets/ios-add-home-button.png",
+        "/BeSTS/assets/ios-share-button.png"
       ],
       "patterns": []
     }
@@ -43,13 +45,15 @@
     "/BeSTS/assets/icons/foot-lost-1024.png": "9833629d4939bdffba54809127e83d45b5d78e43",
     "/BeSTS/assets/icons/foot-sexy-1024.png": "21ccac0aaa3387f7a19538477ae25fde896ba5a4",
     "/BeSTS/assets/icons/foot-weird-1024.png": "3847266aa36e65d645c53f3316477a6dec754d42",
+    "/BeSTS/assets/ios-add-home-button.png": "7fdbf255279d088aee23c39b2bc3c69c2218edaa",
+    "/BeSTS/assets/ios-share-button.png": "c43f9a9fb87e791f99d501ea77d3c21857b8ea18",
     "/BeSTS/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/BeSTS/index.html": "75949af9ae07a879c1dd51a6c2c4dabd908a9c70",
-    "/BeSTS/main.0b92d3b7088f6a9a.js": "422c0992c53ffb3b72a81fed0b92713328656caa",
+    "/BeSTS/index.html": "bb1547092b1f7e69e6d90bdc24bde79e8bc64fff",
+    "/BeSTS/main.99471e4eb61c68b6.js": "cbfa498053e759bbcb3b494babec940e9585eccb",
     "/BeSTS/manifest.webmanifest": "caa23b578cbc234758c176493f5b55767661a4d1",
     "/BeSTS/polyfills.bda049c3ee23953d.js": "5dc1d305e2569c0c311e86ab62a504815bd424b0",
     "/BeSTS/runtime.9c409f17beec6587.js": "37b317e21cf5f57d5e0d997319d44c5288553ebd",
-    "/BeSTS/styles.901a9d7c7d8fda4a.css": "b84dcfa6af1edebf5524d8e9e078686038fd68c5"
+    "/BeSTS/styles.a3c8e3008fc2514b.css": "281951a198f15b26752c1e5e2b2ad4f5351f59c6"
   },
   "navigationUrls": [
     {

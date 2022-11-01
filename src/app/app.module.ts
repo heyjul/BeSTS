@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,9 @@ import { MatchesModule } from './matches/matches.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppUpdateService } from './app-update.service';
+import { AppInstallService } from './app-install.service';
+
+const initializer = (appInstallService: AppInstallService) => () => appInstallService.initPwaPrompt();
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { AppUpdateService } from './app-update.service';
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [AppUpdateService],
+  providers: [
+    AppUpdateService,
+    { provide: APP_INITIALIZER, useFactory: initializer, deps: [AppInstallService], multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,18 @@
+<div *ngIf="data.mobileType === 'android'" color="primary" class="android-prompt">
+    <button mat-icon-button color="primary" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" (click)="installPwa()">
+        Ajouter à l'écran d'acceuil
+    </button>
+</div>
+
+<div *ngIf="data.mobileType === 'ios'" class="ios-prompt">
+    <button mat-button color="primary" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <div>
+        Installez cette application en appuyant sur <img src="./assets/ios-share-button.png"> puis sur <img
+            src="./assets/ios-add-home-button.png">
+    </div>
+</div>

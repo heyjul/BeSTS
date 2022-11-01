@@ -1,0 +1,28 @@
+.android-prompt,
+.ios-prompt {
+    padding: 20px;
+    margin-top: 20px;
+
+    div {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    button:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    button:nth-child(2) {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+
+    img {
+        width: 24px;
+        vertical-align: bottom;
+    }
+}
