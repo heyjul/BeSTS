@@ -1,6 +1,6 @@
 <div class="rooms-container">
     <div>
-        <mat-card *ngFor="let room of rooms$ | async" (click)="openRoom(room.id)">
+        <mat-card *ngFor="let room of rooms$ | async" (click)="openRoom(room.id)" button-swipe>
             <mat-card-title>{{room.name}}</mat-card-title>
             <mat-card-content>
                 {{room.description}}

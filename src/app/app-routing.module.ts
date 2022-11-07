@@ -12,7 +12,7 @@ import { SingleRoomResolver } from './rooms/resolvers/single-room.resolver';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'create-account', component: CreateAccountComponent },
+  { path: 'register', component: CreateAccountComponent },
   { path: 'rooms', component: RoomsComponent, resolve: { rooms: RoomsResolver } },
   { path: 'rooms/:id', component: SingleRoomComponent, resolve: { room: SingleRoomResolver, matches: MatchesResolver } },
   { path: 'create-match/:id', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver } },
