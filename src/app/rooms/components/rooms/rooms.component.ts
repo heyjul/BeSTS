@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, first, map, Observable } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Room } from '../../models/room.model';
 import { RoomService } from '../../services/room.service';
 import { CreateRoomDialogComponent } from '../create-room-dialog/create-room-dialog.component';
@@ -61,6 +62,18 @@ export class RoomsComponent implements OnInit {
           this._rooms$.value.push(res);
           this._rooms$.next(this._rooms$.value);
         });
+    });
+  }
+
+  onSwipe(id: string): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '80%',
+      data: 'Es-tu sûr de vouloir supprimer cette salle ?'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result)
+        console.log(`Remove room ${id}`);
     });
   }
 }

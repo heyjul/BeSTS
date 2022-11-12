@@ -6,15 +6,14 @@ import { RouterModule } from '@angular/router';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { BetDialogComponent } from './components/bet-dialog/bet-dialog.component';
 import { InstallPromptComponent } from './components/install-prompt/install-prompt.component';
-import { ButtonSwipeDirective } from './directives/button-swipe.directive';
+import { ActionSwipeDirective } from './directives/action-swipe.directive';
 
 @NgModule({
     declarations: [
-
         ConfirmDialogComponent,
         BetDialogComponent,
         InstallPromptComponent,
-        ButtonSwipeDirective
+        ActionSwipeDirective
     ],
     imports: [
         CommonModule,
@@ -25,6 +24,7 @@ import { ButtonSwipeDirective } from './directives/button-swipe.directive';
     exports: [
         MaterialModule,
         ReactiveFormsModule,
+        ActionSwipeDirective,
     ]
 })
 export class SharedModule { }
