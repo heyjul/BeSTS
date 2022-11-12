@@ -26,6 +26,10 @@ export class RoomsComponent implements OnInit {
     return this._rooms$.asObservable();
   }
 
+  actions = [
+    { message: 'SUPPRIMER', color: '#f44336' },
+  ];
+
   ngOnInit(): void {
     this.route.data.pipe(
       first(),

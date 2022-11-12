@@ -33,6 +33,12 @@ export class SingleRoomComponent implements OnInit {
 
   isOwner$!: Observable<boolean>;
 
+  actions = [
+    { message: 'VALIDER', color: '#e91e63' },
+    { message: 'MODIFIER', color: '#607d8b' },
+    { message: 'SUPPRIMER', color: '#f44336' },
+  ];
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private auth: AuthService,
@@ -62,9 +68,7 @@ export class SingleRoomComponent implements OnInit {
     this.router.navigateByUrl(`/create-match/${this._room$.value.id}`);
   }
 
-  remove(event: MouseEvent, id: string): void {
-    event.stopPropagation();
-
+  remove(id: string): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '80%',
       data: 'Êtes vous sûr de vouloir supprimer ce match ?'
@@ -76,10 +80,6 @@ export class SingleRoomComponent implements OnInit {
           this._matches$.next(this._matches$.value.filter(x => x.id !== id));
         });
     });
-  }
-
-  edit(event: MouseEvent, match: FullMatch): void {
-    event.stopPropagation();
   }
 
   copy(id: string): void {
@@ -121,5 +121,19 @@ export class SingleRoomComponent implements OnInit {
           }));
         });
     });
+  }
+
+  onTouch(action: number, match: FullMatch) {
+    switch (action) {
+      case 0:
+        // Validate
+        break;
+      case 1:
+        // Edit
+        break;
+      case 2:
+        this.remove(match.id);
+        break;
+    }
   }
 }

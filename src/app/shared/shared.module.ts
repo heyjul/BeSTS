@@ -13,7 +13,7 @@ import { ActionSwipeDirective } from './directives/action-swipe.directive';
         ConfirmDialogComponent,
         BetDialogComponent,
         InstallPromptComponent,
-        ActionSwipeDirective
+        ActionSwipeDirective,
     ],
     imports: [
         CommonModule,

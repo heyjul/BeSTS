@@ -1,7 +1,7 @@
 <div class="rooms-container">
     <div>
         <mat-card *ngFor="let room of rooms$ | async" (click)="openRoom(room.id)" 
-            action-swipe swipeColor="#f44336" swipeMessage="SUPPRIMER" (swipped)="onSwipe(room.id)">
+            action-swipe [swipeActions]="actions" (swipped)="onSwipe(room.id)">
             <mat-card-title>{{room.name}}</mat-card-title>
             <mat-card-content>
                 {{room.description}}

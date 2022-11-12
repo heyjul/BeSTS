@@ -1,4 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { SwipeAction } from '../models/swipe-action.model';
 
 @Directive({
   selector: '[action-swipe]'
@@ -15,94 +16,109 @@ export class ActionSwipeDirective implements AfterViewInit {
   }
 
   @Input() activeSwipeThreshold = 30;
-  @Input() swipeMessage?: string;
-  @Input() swipeColor?: string;
+  @Input() swipeActions?: SwipeAction[];
   @Output() swipped = new EventEmitter<void>();
-  @Output() touched = new EventEmitter<void>();
+  @Output() touched = new EventEmitter<number>();
 
-  private _divInitialTouch!: number;
-  private _initialTouch!: number;
-  private _width!: number;
-  private _text!: any;
-  private _div!: any;
-  private _left!: string;
-  private _active = false;
+  private divInitialTouch!: number;
+  private divTouched!: number;
+  private initialTouch!: number;
+  private width!: number;
+  private div!: any;
+  private left!: string;
+  private active = false;
+  private actionDivs!: any[];
 
   @HostListener('touchstart', ['$event']) onTouchStart(event: TouchEvent) {
     event.stopPropagation();
-    this._initialTouch = event.touches[0].clientX;
+    this.initialTouch = event.touches[0].clientX;
   }
 
   @HostListener('touchmove', ['$event']) onTouchMove(event: TouchEvent) {
     event.stopPropagation();
 
-    if (this._active)
-      this._left = Math.max(0 - (this._initialTouch - event.touches[0].clientX), 0) + 'px';
+    if (this.active)
+      this.left = Math.max(0 - (this.initialTouch - event.touches[0].clientX), 0) + 'px';
     else
-      this._left = Math.max(this._width - (this._initialTouch - event.touches[0].clientX), 0) + 'px';
+      this.left = Math.max(this.width - (this.initialTouch - event.touches[0].clientX), 0) + 'px';
 
     this.update();
   }
 
   @HostListener('touchend', ['$event']) onTouchEnd(event: TouchEvent) {
     event.stopPropagation();
-    if (!this._width)
+    if (!this.width)
       return;
 
-    const delta = this._initialTouch - event.changedTouches[0].clientX;
-    this._active = delta / this._width * 100 >= this.activeSwipeThreshold;
+    const delta = this.initialTouch - event.changedTouches[0].clientX;
+    this.active = delta / this.width * 100 >= this.activeSwipeThreshold;
 
-    if (!this._active) {
-      this._left = this._width + 'px';
+    if (!this.active) {
+      this.left = this.width + 'px';
       this.update();
       return;
     }
 
-    this._left = '0px';
+    this.left = '0px';
     this.update();
     this.swipped.emit();
   }
 
   private create() {
-    this._text = this.renderer.createElement('p');
-    this.renderer.appendChild(this._text, this.renderer.createText(this.swipeMessage ?? ''));
+    if (!this.swipeActions)
+      return;
 
-    this._div = this.renderer.createElement('div');
+    this.actionDivs = [];
+    this.div = this.renderer.createElement('div');
 
-    this.renderer.appendChild(this._div, this._text);
-    this.renderer.appendChild(this.el.nativeElement, this._div);
+    for (const action of this.swipeActions) {
+      const text = this.renderer.createElement('p');
+      this.renderer.appendChild(text, this.renderer.createText(action.message ?? ''));
+      const div = this.renderer.createElement('div');
+      this.renderer.appendChild(div, text);
 
-    this.renderer.addClass(this._div, 'action-swipe--div');
-    this.renderer.addClass(this._text, 'action-swipe--text');
+      this.renderer.setStyle(div, 'background-color', action.color ?? '');
 
-    this.renderer.setStyle(this._div, 'background-color', this.swipeColor ?? '');
+      this.actionDivs.push(div);
+      this.renderer.appendChild(this.div, div);
+    }
+
+    this.renderer.appendChild(this.el.nativeElement, this.div);
+
+    this.renderer.addClass(this.div, 'action-swipe--div');
   }
 
   private update() {
-    this.renderer.setStyle(this._div, 'left', this._left);
+    this.renderer.setStyle(this.div, 'left', this.left);
   }
 
   private reset() {
-    this._width = this.el.nativeElement.offsetWidth + 1; // +1 because width might be a floating point and offsetWidth returns a integer
-    this._left = this._width + 'px';
+    this.width = this.el.nativeElement.offsetWidth + 1; // +1 because width might be a floating point and offsetWidth returns a integer
+    this.left = this.width + 'px';
   }
 
   private setEventListeners() {
-    this.renderer.listen(this._div, 'touchstart', (e: TouchEvent) => {
+    this.renderer.listen(this.div, 'touchstart', (e: TouchEvent) => {
       e.preventDefault();
-      this._divInitialTouch = e.touches[0].clientX;
+      this.divInitialTouch = e.touches[0].clientX;
     });
 
-    this.renderer.listen(this._div, 'touchend', (e: TouchEvent) => {
+    this.renderer.listen(this.div, 'touchend', (e: TouchEvent) => {
       e.preventDefault();
 
       // if user moves too much, it should no be considered as a "click"
-      const delta = Math.abs(this._divInitialTouch - e.changedTouches[0].clientX);
-      if (delta / this._width * 100 > 5) {
+      const delta = Math.abs(this.divInitialTouch - e.changedTouches[0].clientX);
+      if (delta / this.width * 100 > 5) {
         return;
       }
 
-      this.touched.emit();
+      this.touched.emit(this.divTouched);
     });
+
+    for (const [i, actionDiv] of this.actionDivs.entries()) {
+      this.renderer.listen(actionDiv, 'touchstart', () => {
+        this.divTouched = i;
+      });
+    }
   }
 }

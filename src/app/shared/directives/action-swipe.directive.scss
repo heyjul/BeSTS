@@ -1,14 +1,26 @@
-.action-swipe--text {
-    font-size: 2em !important;
-    font-weight: bold !important;
-    margin: 0 !important;
-}
-
 .action-swipe--div {
     position: absolute !important;
     inset: 0;
     overflow: hidden !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    align-content: stretch;
+
+    div {
+        position: relative;
+        overflow: hidden;
+
+        p {
+            font-weight: bold !important;
+            margin: 0 !important;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+        }
+    }
 }
