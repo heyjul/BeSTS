@@ -73,7 +73,7 @@ export class RoomsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result)
-        console.log(`Remove room ${id}`);
+        this.roomService.delete(id).subscribe(() => this._rooms$.next(this._rooms$.value.filter(x => x.id !== id)));
     });
   }
 }

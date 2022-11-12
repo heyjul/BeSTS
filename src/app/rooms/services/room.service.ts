@@ -27,4 +27,8 @@ export class RoomService {
   getById(id: string): Observable<Room> {
     return this.http.get<Room>(`${environment.apiUrl}/rooms/${id}`);
   }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/rooms/${id}`);
+  }
 }
