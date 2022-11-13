@@ -53,7 +53,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
         MatBottomSheetModule,
     ],
     providers: [
-        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 1000000000, verticalPosition: 'bottom' } }
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000, verticalPosition: 'bottom' } }
     ]
 })
 export class MaterialModule { }

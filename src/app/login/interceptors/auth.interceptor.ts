@@ -23,7 +23,8 @@ export class HttpTokenInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse && error.status === 401) {
           return this.handle401Error(authReq, next);
         }
-        return throwError(() => new Error(error));
+
+        return throwError(() => error);
       })
     );
   }
@@ -44,7 +45,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
           catchError((err) => {
             this.isRefreshing = false;
             this.authService.logout();
-            return throwError(() => new Error(err));
+            return throwError(() => err);
           })
         );
       }

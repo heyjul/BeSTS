@@ -32,7 +32,18 @@ router-outlet+* {
 .mat-snack-bar-container {
     max-width: 80% !important;
     margin: 20px auto !important;
+    color: white;
+    background-color: var(--primary);
+
+    &.toast {
+        background-color: var(--warn);
+
+        .mat-simple-snack-bar-content {
+            font-size: 16px;
+        }
+    }
 }
+
 
 mat-bottom-sheet-container {
     border-radius: 15px 15px 0 0 !important;

@@ -1,3 +1,11 @@
 .example-spacer {
     flex: 1 1 auto;
 }
+
+.header-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    align-items: center;
+    justify-items: end;
+}

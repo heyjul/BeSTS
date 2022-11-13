@@ -1,13 +1,16 @@
 <mat-toolbar>
-    <div (click)="goHome()">
-        <ng-container *ngIf="isConnected$ | async; else appName">
-            <button mat-icon-button>
-                <mat-icon>home</mat-icon>
+    <div class="header-container" (click)="goHome()">
+        <ng-container *ngIf="isConnected$ | async; else fullName">
+            <span>BeSTS</span>
+            <button mat-icon-button (click)="previous()" >
+                <mat-icon>chevron_left</mat-icon>
             </button>
-            <span>Accueil</span>
+            <button mat-icon-button (click)="next()" >
+                <mat-icon>chevron_right</mat-icon>
+            </button>
         </ng-container>
     </div>
-    <ng-template #appName>
+    <ng-template #fullName>
         <span>Bet er Safe Than Sorry</span>
     </ng-template>
     <span class="example-spacer"></span>
