@@ -9,13 +9,15 @@ import { RoomsComponent } from './rooms/components/rooms/rooms.component';
 import { SingleRoomComponent } from './rooms/components/single-room/single-room.component';
 import { RoomsResolver } from './rooms/resolvers/rooms.resolver';
 import { SingleRoomResolver } from './rooms/resolvers/single-room.resolver';
+import { MatchResolver } from './matches/resolvers/match.resolver';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: CreateAccountComponent },
   { path: 'rooms', component: RoomsComponent, resolve: { rooms: RoomsResolver } },
   { path: 'rooms/:id', component: SingleRoomComponent, resolve: { room: SingleRoomResolver, matches: MatchesResolver } },
-  { path: 'create-match/:id', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver } },
+  { path: 'rooms/:roomId/match/:matchId', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver, match: MatchResolver } },
+  { path: 'rooms/:roomId/match', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver } },
   { path: '**', redirectTo: 'rooms' }
 ];
 

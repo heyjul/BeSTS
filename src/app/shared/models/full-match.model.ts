@@ -7,4 +7,6 @@ export interface FullMatch {
     guessPoints: number;
     guessedTeamOneScore?: number;
     guessedTeamTwoScore?: number;
+    realTeamOneScore?: number;
+    realTeamTwoScore?: number;
 }

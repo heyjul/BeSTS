@@ -65,7 +65,7 @@ export class SingleRoomComponent implements OnInit {
   }
 
   createMatch(): void {
-    this.router.navigateByUrl(`/create-match/${this._room$.value.id}`);
+    this.router.navigateByUrl(`/rooms/${this._room$.value.id}/match`);
   }
 
   remove(id: string): void {
@@ -126,14 +126,47 @@ export class SingleRoomComponent implements OnInit {
   onTouch(action: number, match: FullMatch) {
     switch (action) {
       case 0:
-        // Validate
+        this.close(match);
         break;
       case 1:
-        // Edit
+        this.router.navigateByUrl(`/rooms/${this._room$.value.id}/match/${match.id}`);
         break;
       case 2:
         this.remove(match.id);
         break;
     }
+  }
+
+  close(match: FullMatch) {
+    if (!!match.realTeamOneScore)
+      return;
+
+    const dialogRef = this.dialog.open(BetDialogComponent, {
+      width: '80%',
+      data: {
+        teamOne: match.teamOne,
+        teamTwo: match.teamTwo
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!!result)
+        this.matchService.close(
+          match.id,
+          {
+            teamOneScore: Number(result.teamOne),
+            teamTwoScore: Number(result.teamTwo),
+          }
+        ).subscribe(matchResult => {
+          this._matches$.next(this._matches$.value.map(x => {
+            if (x.id !== match.id)
+              return x;
+
+            x.realTeamOneScore = matchResult.teamOneScore;
+            x.realTeamTwoScore = matchResult.teamTwoScore;
+            return x;
+          }));
+        });
+    });
   }
 }

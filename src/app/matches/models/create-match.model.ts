@@ -1,4 +1,5 @@
-export interface CreateMatch {
+export interface CreateOrUpdateMatch {
+    id?: string;
     teamOneId: string;
     teamTwoId: string;
     startDate: Date;

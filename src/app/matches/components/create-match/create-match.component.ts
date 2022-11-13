@@ -1,10 +1,9 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Data, Router } from '@angular/router';
+import { FullMatch } from 'src/app/shared/models/full-match.model';
 import { Team } from 'src/app/shared/models/team.model';
-import { TeamService } from 'src/app/shared/services/team.service';
 import { MatchService } from '../../../shared/services/match.service';
 
 @Component({
@@ -17,12 +16,13 @@ export class CreateMatchComponent implements OnInit {
   createMatchForm = this.fb.group({
     teamOne: new FormControl('', Validators.required),
     teamTwo: new FormControl('', Validators.required),
-    startDate: new FormControl('', [Validators.required, Validators.min(Date.now())]),
+    startDate: new FormControl(new Date(), Validators.required),
     winnerPoints: new FormControl(1, [Validators.required, Validators.min(1)]),
     guessPoints: new FormControl(3, [Validators.required, Validators.min(1)])
   });
   teams!: Team[];
   private roomId!: string;
+  private matchId?: string;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -31,14 +31,31 @@ export class CreateMatchComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => this.teams = data['teams']);
-    this.roomId = this.route.snapshot.params["id"];
+    this.route.data.subscribe(data => this.setData(data));
+    this.roomId = this.route.snapshot.params["roomId"];
+  }
+
+  setData(data: Data): void {
+    this.teams = data['teams'];
+    const match = data['match'] as FullMatch;
+    if (!match)
+      return;
+
+    this.matchId = match.id;
+    this.createMatchForm.reset({
+      teamOne: this.teams.find(x => x.name === match.teamOne)?.id,
+      teamTwo: this.teams.find(x => x.name === match.teamTwo)?.id,
+      startDate: new Date(match.startDate),
+      winnerPoints: match.winnerPoints,
+      guessPoints: match.guessPoints,
+    });
   }
 
   save(): void {
     const val = this.createMatchForm.value;
 
-    this.matchService.create({
+    this.matchService.createOrUpdate({
+      id: this.matchId,
       teamOneId: val.teamOne!,
       teamTwoId: val.teamTwo!,
       startDate: new Date(val.startDate!),

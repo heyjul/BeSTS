@@ -20,13 +20,16 @@
         margin-top: 1em;
 
         mat-card-content {
-            color: var(--primary);
             text-align: center;
         }
 
         mat-card-content.guessed {
             color: lightgreen;
-            text-align: center;
+        }
+
+        mat-card-content.real {
+            color: var(--primary);
+            font-size: 18px;
         }
     }
 
