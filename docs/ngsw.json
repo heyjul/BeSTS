@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1668274213706,
+  "timestamp": 1668556317316,
   "index": "/BeSTS/index.html",
   "assetGroups": [
     {
@@ -13,11 +13,11 @@
       "urls": [
         "/BeSTS/favicon.ico",
         "/BeSTS/index.html",
-        "/BeSTS/main.5a29c48f204abb37.js",
+        "/BeSTS/main.97a0cf980c5fe501.js",
         "/BeSTS/manifest.webmanifest",
         "/BeSTS/polyfills.bda049c3ee23953d.js",
         "/BeSTS/runtime.9c409f17beec6587.js",
-        "/BeSTS/styles.29575e0a53554f2e.css"
+        "/BeSTS/styles.a4baf823c74755c1.css"
       ],
       "patterns": []
     },
@@ -48,12 +48,12 @@
     "/BeSTS/assets/ios-add-home-button.png": "7fdbf255279d088aee23c39b2bc3c69c2218edaa",
     "/BeSTS/assets/ios-share-button.png": "c43f9a9fb87e791f99d501ea77d3c21857b8ea18",
     "/BeSTS/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/BeSTS/index.html": "b11a927b458bee2a022f4afbaa3b08f4381b41d4",
-    "/BeSTS/main.5a29c48f204abb37.js": "61b351094a9192eec5f86b427da5ad00a8f9f198",
-    "/BeSTS/manifest.webmanifest": "caa23b578cbc234758c176493f5b55767661a4d1",
+    "/BeSTS/index.html": "5e667fd2503365b0f833c5b930064a33059ea4a3",
+    "/BeSTS/main.97a0cf980c5fe501.js": "e69e15ad36da058657e1092f11dd2c7aaa413ab9",
+    "/BeSTS/manifest.webmanifest": "0524aaf76feca7cf06ca3d6a4e30637458254cf0",
     "/BeSTS/polyfills.bda049c3ee23953d.js": "5dc1d305e2569c0c311e86ab62a504815bd424b0",
     "/BeSTS/runtime.9c409f17beec6587.js": "37b317e21cf5f57d5e0d997319d44c5288553ebd",
-    "/BeSTS/styles.29575e0a53554f2e.css": "baf7d192a25cb8a0ce037d0483e02931625f5172"
+    "/BeSTS/styles.a4baf823c74755c1.css": "e025e4ef80e00eab528e1cf7ecc2034fbd41cdbf"
   },
   "navigationUrls": [
     {
