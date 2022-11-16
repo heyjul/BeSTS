@@ -24,6 +24,10 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="fill">
+            <mat-label>Heure du match</mat-label>
+            <input matInput type="time" formControlName="startHour">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
             <mat-label>Score vainqueur exact</mat-label>
             <input matInput formControlName="winnerPoints">
         </mat-form-field>

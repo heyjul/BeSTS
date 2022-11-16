@@ -17,6 +17,7 @@ export class CreateMatchComponent implements OnInit {
     teamOne: new FormControl('', Validators.required),
     teamTwo: new FormControl('', Validators.required),
     startDate: new FormControl(new Date(), Validators.required),
+    startHour: new FormControl('12:00', Validators.required),
     winnerPoints: new FormControl(1, [Validators.required, Validators.min(1)]),
     guessPoints: new FormControl(3, [Validators.required, Validators.min(1)])
   });
@@ -46,6 +47,7 @@ export class CreateMatchComponent implements OnInit {
       teamOne: this.teams.find(x => x.name === match.teamOne)?.id,
       teamTwo: this.teams.find(x => x.name === match.teamTwo)?.id,
       startDate: new Date(match.startDate),
+      startHour: this.getTimeAsString(new Date(match.startDate)),
       winnerPoints: match.winnerPoints,
       guessPoints: match.guessPoints,
     });
@@ -54,11 +56,15 @@ export class CreateMatchComponent implements OnInit {
   save(): void {
     const val = this.createMatchForm.value;
 
+    const startDate = new Date(val.startDate!);
+    const [hours, minutes] = (val.startHour ?? '00:00').split(':');
+    startDate.setHours(Number(hours), Number(minutes), 0, 0);
+
     this.matchService.createOrUpdate({
       id: this.matchId,
       teamOneId: val.teamOne!,
       teamTwoId: val.teamTwo!,
-      startDate: new Date(val.startDate!),
+      startDate: startDate,
       winnerPoints: Number(val.winnerPoints!),
       guessPoints: Number(val.guessPoints!),
       roomId: this.roomId,
@@ -68,5 +74,10 @@ export class CreateMatchComponent implements OnInit {
 
   close(): void {
     this.location.back();
+  }
+
+  getTimeAsString(date: Date) {
+    return `${date.getHours()}:${(date.getMinutes() < 10 ? "0" : "") +
+      date.getMinutes()}`;
   }
 }
