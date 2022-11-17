@@ -29,11 +29,11 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Score vainqueur exact</mat-label>
-            <input matInput formControlName="winnerPoints">
+            <input matInput type="number" formControlName="winnerPoints">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Score exact</mat-label>
-            <input matInput formControlName="guessPoints">
+            <input matInput type="number" formControlName="guessPoints">
         </mat-form-field>
         <div class="actions">
             <button mat-raised-button color="primary" (click)="save()">

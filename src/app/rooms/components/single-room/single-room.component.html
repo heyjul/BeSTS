@@ -22,10 +22,10 @@
                             <mat-card-title>{{match.teamOne}} VS {{match.teamTwo}}</mat-card-title>
                             <mat-card-subtitle>{{match.startDate | date: 'short'}}</mat-card-subtitle>
                         </mat-card-header>
-                        <mat-card-content class="real" *ngIf="!!match.realTeamOneScore">
+                        <mat-card-content class="real" *ngIf="match.realTeamOneScore != undefined">
                             {{match.realTeamOneScore}} - {{match.realTeamTwoScore}}
                         </mat-card-content>
-                        <mat-card-content class="guessed" *ngIf="!!match.guessedTeamOneScore; else placeholder">
+                        <mat-card-content class="guessed" *ngIf="match.guessedTeamOneScore != undefined; else placeholder">
                             {{match.guessedTeamOneScore}} - {{match.guessedTeamTwoScore}}
                         </mat-card-content>
                         <ng-template #placeholder>
