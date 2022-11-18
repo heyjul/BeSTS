@@ -1,0 +1,7 @@
+<div class="scores-container">
+    <ng-container *ngFor="let score of scores">
+        <p [ngClass]="{'first': score.ranking === 1, 'second': score.ranking === 2, 'third': score.ranking === 3}">
+            {{ score.ranking }}# : {{ score.score }}pt{{ score.score > 1 ? 's' : '' }} {{ score.username }}
+        </p>
+    </ng-container>
+</div >

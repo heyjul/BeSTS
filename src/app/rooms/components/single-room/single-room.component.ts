@@ -82,6 +82,10 @@ export class SingleRoomComponent implements OnInit {
     });
   }
 
+  scores(id: string): void {
+    this.router.navigateByUrl(`/rooms/${id}/scores`);
+  }
+
   copy(id: string): void {
     this.clipboard.copy(id);
     this.snackBar.open('Copié dans le presse-papiers', 'Fermer');

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CreateRoom } from '../models/create-room.model';
 import { Room } from '../models/room.model';
+import { Score } from '../models/score.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class RoomService {
 
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/rooms/${id}`);
+  }
+
+  getScores(id: string): Observable<Score[]> {
+    return this.http.get<Score[]>(`${environment.apiUrl}/rooms/${id}/scores`);
   }
 }

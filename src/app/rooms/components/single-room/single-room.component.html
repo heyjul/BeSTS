@@ -41,11 +41,11 @@
                     <mat-icon>add</mat-icon>
                 </button>
                 <div>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="scores(room.id)">
                         <mat-icon color="primary">bar_chart</mat-icon>
                     </button>
-                    <button mat-icon-button *ngIf="isOwner$ | async">
-                        <mat-icon color="primary" (click)="copy(room.id)">person_add</mat-icon>
+                    <button mat-icon-button *ngIf="isOwner$ | async" (click)="copy(room.id)">
+                        <mat-icon color="primary">person_add</mat-icon>
                     </button>
                 </div>
             </div>

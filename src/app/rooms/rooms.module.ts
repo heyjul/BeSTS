@@ -5,6 +5,7 @@ import { CreateRoomDialogComponent } from './components/create-room-dialog/creat
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { JoinRoomDialogComponent } from './components/join-room-dialog/join-room-dialog.component';
 import { SingleRoomComponent } from './components/single-room/single-room.component';
+import { ScoresComponent } from './components/scores/scores.component';
 
 @NgModule({
     declarations: [
@@ -12,6 +13,7 @@ import { SingleRoomComponent } from './components/single-room/single-room.compon
         CreateRoomDialogComponent,
         JoinRoomDialogComponent,
         SingleRoomComponent,
+        ScoresComponent,
     ],
     imports: [
         CommonModule,
