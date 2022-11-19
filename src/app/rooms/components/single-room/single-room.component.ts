@@ -27,7 +27,17 @@ export class SingleRoomComponent implements OnInit {
   private _matches$!: BehaviorSubject<FullMatch[]>;
   get matches$() {
     return this._matches$.asObservable().pipe(
-      map(x => x.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()))
+      map(x => x.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime())),
+      map(matches => {
+        const newMatches = [...matches];
+
+        var prevDay = new Date();
+        prevDay.setDate(prevDay.getDate() - 1);
+        const passed = newMatches.splice(0, newMatches.findIndex(match => new Date(match.startDate) > prevDay));
+        passed.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+
+        return newMatches.concat(passed);
+      })
     );
   }
 

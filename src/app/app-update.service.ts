@@ -10,7 +10,6 @@ import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confi
 export class AppUpdateService {
   constructor(private readonly updates: SwUpdate,
     private dialog: MatDialog) {
-    console.log('Check for updates');
     this.updates.versionUpdates.pipe(filter(x => x.type === "VERSION_READY")).subscribe(_ => {
       this.showAppUpdateAlert();
     });

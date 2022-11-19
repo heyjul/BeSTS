@@ -22,6 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
         MatBottomSheetModule,
     ],
     providers: [
-        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000, verticalPosition: 'bottom' } }
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 5000, verticalPosition: 'bottom' } },
+        { provide: MAT_DATE_LOCALE, useValue: 'fr-BE' }
     ]
 })
 export class MaterialModule { }

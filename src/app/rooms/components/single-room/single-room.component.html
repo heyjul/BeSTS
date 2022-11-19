@@ -20,7 +20,7 @@
                     <ng-template #cardContent>
                         <mat-card-header>
                             <mat-card-title>{{match.teamOne}} VS {{match.teamTwo}}</mat-card-title>
-                            <mat-card-subtitle>{{match.startDate | date: 'short'}}</mat-card-subtitle>
+                            <mat-card-subtitle>{{match.startDate | date: 'dd/MM/yyyy, HH:mm'}}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content class="real" *ngIf="match.realTeamOneScore != undefined">
                             {{match.realTeamOneScore}} - {{match.realTeamTwoScore}}
