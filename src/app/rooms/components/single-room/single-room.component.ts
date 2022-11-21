@@ -105,8 +105,20 @@ export class SingleRoomComponent implements OnInit {
     return new Date(startDate) > new Date();
   }
 
-  isInProgress(match: FullMatch): boolean {
-    return !this.canBet(match.startDate) && match.realTeamOneScore == undefined;
+  getClass(match: FullMatch): string | undefined {
+    if (this.canBet(match.startDate))
+      return undefined;
+    if (!this.canBet(match.startDate) && match.realTeamOneScore == undefined)
+      return 'in-progress';
+    if (match.guessedTeamOneScore == undefined || match.guessedTeamTwoScore == undefined)
+      return 'failed';
+    if (match.guessedTeamOneScore === match.realTeamOneScore && match.guessedTeamTwoScore === match.realTeamTwoScore)
+      return 'right-score';
+    if ((match.guessedTeamOneScore < match.guessedTeamTwoScore && match.realTeamOneScore! < match.realTeamTwoScore!)
+      || (match.guessedTeamOneScore > match.guessedTeamTwoScore && match.realTeamOneScore! > match.realTeamTwoScore!))
+      return 'right-team';
+    return 'failed';
+
   }
 
   openBetDialog(match: FullMatch): void {

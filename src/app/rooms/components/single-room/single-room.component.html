@@ -4,14 +4,14 @@
         <div class="matches-container">
             <div class="card-scroll">
                 <ng-container *ngFor="let match of matches$ | async">
-                    <mat-card *ngIf="isOwner$ | async; else cardWithoutSwipe" [ngClass]="{disabled: !canBet(match.startDate), 'inprogress': isInProgress(match)}"
+                    <mat-card *ngIf="isOwner$ | async; else cardWithoutSwipe" [ngClass]="getClass(match)"
                         (click)="openBetDialog(match)"
                         action-swipe [swipeActions]="actions" (touched)="onTouch($event, match)">
                         <ng-container *ngTemplateOutlet="cardContent"></ng-container>
                     </mat-card>
 
                     <ng-template #cardWithoutSwipe>
-                        <mat-card [ngClass]="{disabled: !canBet(match.startDate), 'inprogress': isInProgress(match)}"
+                        <mat-card [ngClass]="getClass(match)"
                             (click)="openBetDialog(match)">
                             <ng-container *ngTemplateOutlet="cardContent"></ng-container>
                         </mat-card>
@@ -25,7 +25,7 @@
                         <mat-card-content class="real" *ngIf="match.realTeamOneScore != undefined">
                             {{match.realTeamOneScore}} - {{match.realTeamTwoScore}}
                         </mat-card-content>
-                        <mat-card-content class="guessed" *ngIf="match.guessedTeamOneScore != undefined; else placeholder">
+                        <mat-card-content *ngIf="match.guessedTeamOneScore != undefined; else placeholder">
                             {{match.guessedTeamOneScore}} - {{match.guessedTeamTwoScore}}
                         </mat-card-content>
                         <ng-template #placeholder>

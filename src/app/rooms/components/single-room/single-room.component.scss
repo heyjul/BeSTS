@@ -20,27 +20,48 @@
         margin-top: 1em;
 
         mat-card-content {
+            margin-top: 10px;
+            margin-bottom: 0;
             text-align: center;
         }
 
-        mat-card-content.guessed {
-            color: lightgreen;
-        }
-
         mat-card-content.real {
-            color: var(--primary);
             font-size: 18px;
         }
     }
 
 }
 
-.disabled {
-    border: 1px solid var(--warn);
+.right-score {
+    border: 1px solid lightgreen;
+
+    mat-card-content {
+        color: lightgreen;
+    }
 }
 
-.inprogress {
+.right-team {
+    border: 1px solid yellow;
+
+    mat-card-content {
+        color: yellow;
+    }
+}
+
+.failed {
+    border: 1px solid var(--warn);
+
+    mat-card-content {
+        color: var(--warn);
+    }
+}
+
+.in-progress {
     border: 1px solid turquoise;
+
+    mat-card-content {
+        color: turquoise;
+    }
 }
 
 .matches-container {
