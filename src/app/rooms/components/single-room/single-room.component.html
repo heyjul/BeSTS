@@ -4,14 +4,14 @@
         <div class="matches-container">
             <div class="card-scroll">
                 <ng-container *ngFor="let match of matches$ | async">
-                    <mat-card *ngIf="isOwner$ | async; else cardWithoutSwipe" [ngClass]="{disabled: !canBet(match.startDate)}"
+                    <mat-card *ngIf="isOwner$ | async; else cardWithoutSwipe" [ngClass]="{disabled: !canBet(match.startDate), 'inprogress': isInProgress(match)}"
                         (click)="openBetDialog(match)"
                         action-swipe [swipeActions]="actions" (touched)="onTouch($event, match)">
                         <ng-container *ngTemplateOutlet="cardContent"></ng-container>
                     </mat-card>
 
                     <ng-template #cardWithoutSwipe>
-                        <mat-card [ngClass]="{disabled: !canBet(match.startDate)}"
+                        <mat-card [ngClass]="{disabled: !canBet(match.startDate), 'inprogress': isInProgress(match)}"
                             (click)="openBetDialog(match)">
                             <ng-container *ngTemplateOutlet="cardContent"></ng-container>
                         </mat-card>

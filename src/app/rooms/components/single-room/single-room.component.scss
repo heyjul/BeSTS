@@ -39,6 +39,10 @@
     border: 1px solid var(--warn);
 }
 
+.inprogress {
+    border: 1px solid turquoise;
+}
+
 .matches-container {
     display: flex;
     flex-direction: column;

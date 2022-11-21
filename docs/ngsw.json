@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1669055217385,
+  "timestamp": 1669056452623,
   "index": "/BeSTS/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/BeSTS/favicon.ico",
         "/BeSTS/index.html",
-        "/BeSTS/main.146c5c13cc7a681e.js",
+        "/BeSTS/main.da415fd52047d251.js",
         "/BeSTS/manifest.webmanifest",
         "/BeSTS/polyfills.bda049c3ee23953d.js",
         "/BeSTS/runtime.9c409f17beec6587.js",
@@ -48,8 +48,8 @@
     "/BeSTS/assets/ios-add-home-button.png": "7fdbf255279d088aee23c39b2bc3c69c2218edaa",
     "/BeSTS/assets/ios-share-button.png": "c43f9a9fb87e791f99d501ea77d3c21857b8ea18",
     "/BeSTS/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/BeSTS/index.html": "21d4d9d30b7845f562e3e67e43748ab79a13858f",
-    "/BeSTS/main.146c5c13cc7a681e.js": "ee80707567d86a694a381396d411bdb5aaacb833",
+    "/BeSTS/index.html": "eb1c54a37fd3ac679fb44288a50222db92cd84b0",
+    "/BeSTS/main.da415fd52047d251.js": "10851eabad7f0f30f96ab016571f9b6dd0fbb0c4",
     "/BeSTS/manifest.webmanifest": "0524aaf76feca7cf06ca3d6a4e30637458254cf0",
     "/BeSTS/polyfills.bda049c3ee23953d.js": "5dc1d305e2569c0c311e86ab62a504815bd424b0",
     "/BeSTS/runtime.9c409f17beec6587.js": "37b317e21cf5f57d5e0d997319d44c5288553ebd",
