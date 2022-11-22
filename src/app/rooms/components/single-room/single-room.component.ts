@@ -33,7 +33,12 @@ export class SingleRoomComponent implements OnInit {
 
         var prevDay = new Date();
         prevDay.setDate(prevDay.getDate() - 1);
-        const passed = newMatches.splice(0, newMatches.findIndex(match => new Date(match.startDate) > prevDay));
+        prevDay.setHours(0, 0, 0, 0);
+        const passed = newMatches.splice(0, newMatches.findIndex(match => {
+          const d = new Date(match.startDate);
+          d.setHours(0, 0, 0, 0);
+          return d > prevDay;
+        }));
         passed.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 
         return newMatches.concat(passed);
