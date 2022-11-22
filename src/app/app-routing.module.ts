@@ -12,6 +12,8 @@ import { SingleRoomResolver } from './rooms/resolvers/single-room.resolver';
 import { MatchResolver } from './matches/resolvers/match.resolver';
 import { ScoresComponent } from './rooms/components/scores/scores.component';
 import { ScoresResolver } from './rooms/resolvers/scores.resolver';
+import { BetsComponent } from './matches/components/bets/bets.component';
+import { BetsResolver } from './matches/resolvers/bets.resolver';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'rooms', component: RoomsComponent, resolve: { rooms: RoomsResolver } },
   { path: 'rooms/:id', component: SingleRoomComponent, resolve: { room: SingleRoomResolver, matches: MatchesResolver } },
   { path: 'rooms/:id/scores', component: ScoresComponent, resolve: { scores: ScoresResolver } },
+  { path: 'rooms/:roomId/match/:matchId/bets', component: BetsComponent, resolve: { bets: BetsResolver } },
   { path: 'rooms/:roomId/match/:matchId', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver, match: MatchResolver } },
   { path: 'rooms/:roomId/match', component: CreateMatchComponent, resolve: { teams: CreateMatchResolver } },
   { path: '**', redirectTo: 'rooms' }

@@ -204,4 +204,9 @@ export class SingleRoomComponent implements OnInit {
         });
     });
   }
+
+  showBets(event: MouseEvent, matchId: string): void {
+    event.stopPropagation();
+    this.router.navigateByUrl(`/rooms/${this._room$.value.id}/match/${matchId}/bets`)
+  }
 }

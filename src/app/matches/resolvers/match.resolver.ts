@@ -15,7 +15,6 @@ export class MatchResolver implements Resolve<FullMatch> {
     constructor(private matchService: MatchService) { }
 
     resolve(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<FullMatch> {
-        console.log('match resolver');
         return this.matchService.getById(route.params["matchId"]);
     }
 }

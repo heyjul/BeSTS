@@ -1,0 +1,6 @@
+<div class="bets-container">
+    <h2>{{ bets[0].teamOne }} - {{ bets[0].teamTwo }}</h2>
+    <ng-container *ngFor="let bet of bets">
+        <p>{{ bet.username }} : {{ bet.teamOneScore }} - {{ bet.teamTwoScore }}</p>
+    </ng-container>
+</div>
