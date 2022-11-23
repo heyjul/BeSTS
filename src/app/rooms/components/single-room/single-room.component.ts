@@ -120,7 +120,8 @@ export class SingleRoomComponent implements OnInit {
     if (match.guessedTeamOneScore === match.realTeamOneScore && match.guessedTeamTwoScore === match.realTeamTwoScore)
       return 'right-score';
     if ((match.guessedTeamOneScore < match.guessedTeamTwoScore && match.realTeamOneScore! < match.realTeamTwoScore!)
-      || (match.guessedTeamOneScore > match.guessedTeamTwoScore && match.realTeamOneScore! > match.realTeamTwoScore!))
+      || (match.guessedTeamOneScore > match.guessedTeamTwoScore && match.realTeamOneScore! > match.realTeamTwoScore!)
+      || (match.guessedTeamOneScore === match.guessedTeamTwoScore && match.realTeamOneScore! === match.realTeamTwoScore!))
       return 'right-team';
     return 'failed';
 
